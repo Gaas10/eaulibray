@@ -1,0 +1,104 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="dashboard">
+    <div class="top">
+        
+        <i ><img class="uil uil-bars sidebar-toggle"  src="{% static 'images/menu.svg' %}" alt=""></i>
+        
+
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+        <button>
+            <img src="{% static 'images/arday.svg' %}" alt="">
+        </button>
+        
+        
+    </div>
+
+    <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <img class="icons"  src="{% static 'images/dashboard-apps.svg' %}" alt="">
+                <span class="text">Dashboard</span>
+            </div>
+
+            <div class="boxes">
+                <div class="box box1">
+                    <i class="uil uil-book-alt"></i>
+                    <span class="text">Total Books</span>
+                    <span class="number">{{total_books}}</span>
+                </div>
+                <div class="box box2">
+                     <i class="uil uil-chart"></i>
+                    <span class="text">Total Students</span>
+                    <span class="number">{{total_students}}</span>
+                </div>
+                <div class="box box3">
+                    <i class="uil uil-book-reader"></i>
+                    <span class="text">Issued Books</span>
+                    <span class="number">{{total_issued}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity">
+            <div class="title">
+                <img class="icons"  src="{% static 'images/arday.svg' %}" alt="">
+                <span class="text">Recent Students</span>
+            </div>
+
+            <div class="table-wrapper ">
+                <table class="fl-table " id="table1">
+                    <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>Name</th>
+                        <th>Rool No</th>
+                        <th>Department</th>
+                        <th>Semester</th>
+                        <th>Gender</th>
+                        <th>Contact</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                    <tr>
+                            
+                        <td>{{student.id}}</td>
+                        <td>{{student.get_name}}</td>
+                        <td>{{student.roll_no}}</td>
+                        <td>{{student.department}}</td>
+                        <td>{{student.semester}}</td>
+                        <td>{{student.gender}}</td>
+                        <td>{{student.contact}}</td>
+                        <td>{{student.status}}</td>
+                        <td><a href="{% url 'updatestudent' student.id %}"><button class="button-62" role="button">  Edit</button></a></td>
+                        <td><a href="{% url 'deletestudent' student.id %}"><button class="button-62" role="button">  Delete</button></a></td>
+                        
+                    </tr>
+                      {% endfor %} 
+                   
+                    
+                   
+                    
+                  
+                    <tbody>
+                </table>
+            </div>
+
+           
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

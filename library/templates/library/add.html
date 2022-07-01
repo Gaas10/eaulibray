@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="dashboard" >
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+  
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+        <button>
+            <img src="images/profile.jpg" alt="">
+        </button>
+        
+        
+    </div>
+  
+    <div class="dash-content">
+
+        <div class="wrapper bg-white mt-sm-5">
+            <h4 class="pb-4 border-bottom">Add Student</h4>
+            <form method="POST"> 
+                {% csrf_token %}
+                {% for i in form %} 
+                 
+                <div class="py-2">
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label for="firstname">{{ i.label_tag }}</label>
+                            {{ i }}
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                    <div class="py-3 pb-4 ">
+                        <button class="btn btn-primary mr-3">ADD</button>
+                     
+                      
+                    </div>
+        
+                    
+                </div>
+               
+            </form>
+        </div>
+
+     
+ 
+  
+       
+    </div>
+  </section>
+<script src="script.js"></script>
+<script>
+            function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search1");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table1");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+        }       
+    }
+    }
+    </script>
+
+    
+
+{% endblock content %}

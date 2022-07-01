@@ -1,0 +1,192 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="dashboard" >
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+  
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+        <button>
+            <img src="images/profile.jpg" alt="">
+        </button>
+        
+        
+    </div>
+  
+    <div class="dash-content">
+        <div class="wrapper bg-white mt-sm-5">
+            <h4 class="pb-4 border-bottom">Account settings</h4>
+            <form method="POST">
+                    {% csrf_token %}
+                    {% for i in form %}
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <label for="firstname">{{ i.label_tag }}</label>
+                        {{ i }}
+                    </div>
+                    
+                </div>
+                {% endfor %}
+                    <div class="py-3 pb-4 border-bottom">
+                        <button type="submit"  class="btn btn-primary mr-3">Save Changes</button>
+                        <button class="btn border button">Cancel</button>
+                    </div>
+            </form> 
+            </div>
+        </div>
+    
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-color: aliceblue;
+            }
+            
+            .wrapper {
+                padding: 30px 50px;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                margin: 10px auto;
+                max-width: 600px;
+            }
+            
+            h4 {
+                letter-spacing: -1px;
+                font-weight: 400;
+            }
+            
+            .img {
+                width: 70px;
+                height: 70px;
+                border-radius: 6px;
+                object-fit: cover;
+            }
+            
+            #img-section p,
+            #deactivate p {
+                font-size: 12px;
+                color: #777;
+                margin-bottom: 10px;
+                text-align: justify;
+            }
+            
+            #img-section b,
+            #img-section button,
+            #deactivate b {
+                font-size: 14px;
+            }
+            
+            label {
+                margin-bottom: 0;
+                font-size: 14px;
+                font-weight: 500;
+                color: #777;
+                padding-left: 3px;
+            }
+            
+            .form-control {
+                border-radius: 10px;
+            }
+            
+            input[placeholder] {
+                font-weight: 500;
+            }
+            
+            .form-control:focus {
+                box-shadow: none;
+                border: 1.5px solid #0779e4;
+            }
+            
+            select {
+                display: block;
+                width: 100%;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                height: 40px;
+                padding: 5px 10px;
+                /* -webkit-appearance: none; */
+            }
+            
+            select:focus {
+                outline: none;
+            }
+            
+            .button {
+                background-color: #fff;
+                color: #0779e4;
+            }
+            
+            .button:hover {
+                background-color: #0779e4;
+                color: #fff;
+            }
+            
+            .btn-primary {
+                background-color: #0779e4;
+            }
+            
+            .danger {
+                background-color: #fff;
+                color: #e20404;
+                border: 1px solid #ddd;
+            }
+            
+            .danger:hover {
+                background-color: #e20404;
+                color: #fff;
+            }
+            
+            @media(max-width:576px) {
+                .wrapper {
+                    padding: 25px 20px;
+                }
+                #deactivate {
+                    line-height: 18px;
+                }
+            }
+
+        </style>
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+ 
+  
+       
+    </div>
+  </section>
+<script src="script.js"></script>
+<script>
+            function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search1");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table1");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+        }       
+    }
+    }
+    </script>
+
+{% endblock content %}

@@ -1,0 +1,91 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="dashboard">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here..." id= "search1" onkeyup="myFunction()"> 
+        </div>
+        <button>
+            <img src="images/profile.jpg" alt="">
+        </button>
+        
+        
+    </div>
+
+    <div class="dash-content">
+        <div class="table-wrapper ">
+            <table class="fl-table " id="table1">
+                <thead>
+                <tr>
+                
+                    <th>NO</th>
+                    <th>Department</th>
+                    <th>Semester</th>
+                    <th>Book Name</th>
+                    <th>ISBN</th>
+                    <th>Status</th>
+                    <th>Issued Date</th>
+                    <th>Expiry Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i in li %} 
+                <tr>
+                        
+                    <td>{{forloop.counter}}.</td>
+                    <td>{{i.0}}</td>
+                    <td>{{i.1}}</td>
+                    <td>{{i.2}}</td>
+                    <td>{{i.3}}</td>
+                    <td>{{i.4}}</td>
+                    <td>{{i.5}}</td>
+                    <td>₹ {{i.6}}</td>
+                    <td><button class="button-62" role="button">   Edit</button></td>
+                    <td><a href=''><button class="button-62" role="button">  Delete</button></a></td>
+                    
+                </tr>
+                {% endfor %}
+               
+                
+               
+                
+              
+                <tbody>
+            </table>
+        </div>
+        
+    </div>
+</section>
+
+
+<script src="script.js"></script>
+<script>
+            function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search1");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table1");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+        }       
+    }
+    }
+    </script>
+
+{% endblock content %}

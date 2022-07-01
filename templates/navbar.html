@@ -1,0 +1,64 @@
+{% load static %}
+{% block content %}
+
+<nav>
+    <div class="logo-name">
+        <div class="logo-image">
+            <img src="{% static 'images/logo.png' %}" alt="sw">
+        </div>
+
+        <span class="logo_name">EAU LIBRARY</span>
+    </div>
+
+    <div class="menu-items">
+       
+        <ul class="nav-links">
+            <li><a href="/">
+                <img class="icons"  src="{% static 'images/home.svg' %}" alt="">
+                <span class="link-name">Home</span>
+            </a></li>
+            <li><a href="books">
+                <img class="icons"  src="{% static 'images/books.svg' %}" alt="">
+               
+                <span class="link-name">Books</span>
+            </a></li>
+            <li><a href="issuebook">
+                <img class="icons"  src="{% static 'images/book-reader.svg' %}" alt="">
+                <span class="link-name">Issue Book</span>
+            </a></li>
+            <li><a href="view_issued_book">
+                <img class="icons"  src="{% static 'images/issued.svg' %}" alt="">
+                <span class="link-name">Issued Books</span>
+            </a></li>
+            <li><a href="addbook">
+                <img class="icons"  src="{% static 'images/students.svg' %}" alt="">
+                <span class="link-name">Add book</span>
+            </a></li>
+          
+            <li><a href="addstudent">
+                <img class="icons"  src="{% static 'images/contact-book.svg' %}" alt="">
+                <span class="link-name">Add student</span>
+            </a></li>
+        </ul>
+        
+        <ul class="logout-mode">
+            <li><a href="logout">
+                <img class="icons"  src="{% static 'images/signout.svg' %}" alt="">
+                <span class="link-name">Logout</span>
+            </a></li>
+
+            <li class="mode">
+                <a href="#">
+                    <img class="icons"  src="{% static 'images/moon.svg' %}" alt="">
+                <span class="link-name">Dark Mode</span>
+            </a>
+            <div class="mode-toggle">
+              <span class="switch"></span>
+            </div>
+        </li>
+        </ul>
+    </div>
+</nav>
+
+
+{% endblock content %}

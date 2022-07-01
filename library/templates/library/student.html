@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="dashboard">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here..." id= "search1" onkeyup="myFunction()"> 
+        </div>
+        <button>
+            <img src="images/profile.jpg" alt="">
+        </button>
+        
+        
+    </div>
+
+    <div class="dash-content">
+        <div class="table-wrapper ">
+            <table class="fl-table " id="table1">
+                <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Isbn</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tbody>
+                    {% for student in students %} 
+                <tr>
+                        
+                    <td>{{student.id}}</td>
+                    <td>{{student.first_name}}</td>
+                    <td>{{student.roll_no}}</td>
+                    <td>{{student.department}}</td>
+                    <td>{{student.semester}}</td>
+                    <td>{{student.gender}}</td>
+                    <td>{{student.contact}}</td>
+                    <td><button class="button-62" role="button">   Edit</button></td>
+                    <td><button class="button-62" role="button">Delete</button></td>
+                    
+                </tr>
+                      {% endfor %}
+               
+                
+               
+                
+              
+                <tbody>
+            </table>
+        </div>
+        
+    </div>
+</section>
+
+
+<script src="script.js"></script>
+<script>
+            function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search1");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table1");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+        }       
+    }
+    }
+    </script>
+
+{% endblock content %}
